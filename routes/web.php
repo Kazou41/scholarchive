@@ -48,6 +48,8 @@ Route::prefix('student')->name('student.')->middleware(['auth', 'role:student'])
     Route::get('/generate-cv', [StudentPortfolioController::class, 'generateCv'])->name('generate-cv');
     Route::post('/generate-cv', [StudentPortfolioController::class, 'generateCvAi'])->name('generate-cv.ai');
     Route::post('/download-cv', [StudentPortfolioController::class, 'downloadCvPdf'])->name('download-cv');
+    Route::get('/settings', [StudentPortfolioController::class, 'settings'])->name('settings');
+    Route::put('/settings', [StudentPortfolioController::class, 'updateSettings'])->name('settings.update');
 });
 
 Route::get('/student/{user}', [StudentPublicController::class, 'show'])->name('student.public-profile');

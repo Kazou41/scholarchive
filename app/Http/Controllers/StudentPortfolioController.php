@@ -314,4 +314,60 @@ class StudentPortfolioController extends Controller
 
         return $pdf->download($filename);
     }
+
+    // ═══════════════════════════════════════
+    // ACCOUNT SETTINGS
+    // ═══════════════════════════════════════
+
+    public function settings()
+    {
+        $user = Auth::user();
+        return view('student.settings', compact('user'));
+    }
+
+    public function updateSettings(Request $request)
+    {
+        $user = Auth::user();
+        $section = $request->input('section');
+
+        if ($section === 'email') {
+            $request->validate([
+                'email' => 'required|email|unique:users,email,' . $user->id,
+            ], [
+                'email.required' => 'Email wajib diisi.',
+                'email.email'    => 'Format email tidak valid.',
+                'email.unique'   => 'Email sudah digunakan oleh akun lain.',
+            ]);
+
+            $user->update(['email' => $request->email]);
+
+            return redirect()->route('student.settings')
+                ->with('success', 'Email berhasil diperbarui!');
+        }
+
+        if ($section === 'password') {
+            $request->validate([
+                'current_password' => 'required',
+                'password'         => 'required|string|min:8|confirmed',
+            ], [
+                'current_password.required' => 'Password lama wajib diisi.',
+                'password.required'         => 'Password baru wajib diisi.',
+                'password.min'              => 'Password baru minimal 8 karakter.',
+                'password.confirmed'        => 'Konfirmasi password tidak cocok.',
+            ]);
+
+            if (!\Illuminate\Support\Facades\Hash::check($request->current_password, $user->password)) {
+                return back()->withErrors(['current_password' => 'Password lama tidak sesuai.']);
+            }
+
+            $user->update([
+                'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+            ]);
+
+            return redirect()->route('student.settings')
+                ->with('success', 'Password berhasil diperbarui!');
+        }
+
+        return back();
+    }
 }
