@@ -132,10 +132,6 @@
         <div class="sp-section-card sp-fade-up" style="background:transparent;border:none;padding:0;box-shadow:none;backdrop-filter:none;">
             <div class="sp-section-header" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
                 <h2 class="sp-section-title">Karya Saya <span style="color:#94a3b8;font-weight:400;">({{ $user->portfolios->count() }})</span></h2>
-                <a href="{{ route('student.portfolio.create') }}" class="sp-btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-                    Unggah Karya
-                </a>
             </div>
 
             <div class="sp-portfolio-grid">
@@ -163,9 +159,9 @@
                             @endif
                         </div>
                         <h3 class="sp-work-title">{{ $work->title }}</h3>
-                        <a href="{{ route('portfolio.detail', $work->slug) }}" class="sp-work-link">
-                            Lihat Detail
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        <a href="{{ route('student.portfolio.edit', $work->id) }}" class="sp-work-link" style="color:#818cf8;">
+                            Edit Karya
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
                         </a>
                     </div>
                 </div>
