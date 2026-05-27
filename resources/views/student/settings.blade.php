@@ -32,17 +32,27 @@
                     <p class="dk-section-desc">Email yang digunakan untuk login ke akun Anda</p>
                 </div>
             </div>
-            <form action="{{ route('student.settings.update') }}" method="POST">
+            <form action="{{ route('student.settings.update') }}" method="POST" onsubmit="document.getElementById('real_email').value = document.getElementById('email_username').value + '@siswa.skagata.sch.id'">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="section" value="email">
+                <input type="hidden" name="email" id="real_email">
                 <div class="dk-form-group">
                     <label class="dk-label">Email Saat Ini</label>
                     <div class="dk-current-value">{{ $user->email }}</div>
                 </div>
                 <div class="dk-form-group">
                     <label class="dk-label">Email Baru</label>
-                    <input type="email" name="email" class="dk-input" placeholder="Masukkan email baru" value="{{ old('email') }}">
+                    @php
+                        $currentEmail = old('email', $user->email);
+                        $usernamePart = explode('@', $currentEmail)[0];
+                    @endphp
+                    <div style="display:flex; align-items:center;">
+                        <input type="text" id="email_username" class="dk-input" style="border-top-right-radius:0; border-bottom-right-radius:0; border-right:none; flex:1;" placeholder="nama.siswa" value="{{ $usernamePart }}" required>
+                        <div style="padding:0.75rem 1rem; background:rgba(15,23,42,0.8); border:1.5px solid rgba(148,163,184,0.12); border-left:none; border-top-right-radius:0.625rem; border-bottom-right-radius:0.625rem; color:#94a3b8; font-size:0.875rem;">
+                            @siswa.skagata.sch.id
+                        </div>
+                    </div>
                     @error('email')
                         <span class="dk-error-text">{{ $message }}</span>
                     @enderror
