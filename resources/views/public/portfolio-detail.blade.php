@@ -20,12 +20,24 @@
             @if($portfolio->video_url)
                 @php
                     $embedUrl = $portfolio->video_url;
-                    if (str_contains($embedUrl, 'youtube.com/watch?v=')) {
-                        $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
-                        $embedUrl = explode('&', $embedUrl)[0]; // Remove extra params
-                    } elseif (str_contains($embedUrl, 'youtu.be/')) {
-                        $embedUrl = str_replace('youtu.be/', 'youtube.com/embed/', $embedUrl);
-                        $embedUrl = explode('?', $embedUrl)[0];
+                    if (str_contains($embedUrl, 'youtube.com') || str_contains($embedUrl, 'youtu.be')) {
+                        $parsed = parse_url($embedUrl);
+                        $videoId = null;
+                        if (isset($parsed['host']) && str_contains($parsed['host'], 'youtu.be')) {
+                            $videoId = ltrim($parsed['path'] ?? '', '/');
+                        } elseif (isset($parsed['query'])) {
+                            parse_str($parsed['query'], $query);
+                            $videoId = $query['v'] ?? null;
+                        }
+                        if (!$videoId && isset($parsed['path']) && str_contains($parsed['path'], '/embed/')) {
+                            $videoId = str_replace('/embed/', '', $parsed['path']);
+                        }
+                        if (!$videoId && isset($parsed['path']) && str_contains($parsed['path'], '/shorts/')) {
+                            $videoId = str_replace('/shorts/', '', $parsed['path']);
+                        }
+                        if ($videoId) {
+                            $embedUrl = 'https://www.youtube.com/embed/' . $videoId;
+                        }
                     }
                 @endphp
                 <iframe src="{{ $embedUrl }}" style="width:100%; aspect-ratio: 16/9; border:none; border-radius:1rem; display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
