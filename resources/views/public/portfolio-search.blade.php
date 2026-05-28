@@ -98,7 +98,23 @@
         <div class="portfolio-grid animate-item delay-4">
             @forelse($portfolios as $work)
             <a href="{{ route('portfolio.detail', $work->slug) }}" class="portfolio-card" style="text-decoration:none;color:inherit;">
-                <div class="portfolio-card-img"><img src="{{ $work->file_path ? asset('storage/' . $work->file_path) : 'https://picsum.photos/seed/'.$work->id.'/600/400' }}" alt="{{ $work->title }}"></div>
+                <div class="portfolio-card-img">
+                    @if($work->file_path && str_starts_with($work->file_type, 'image/'))
+                        <img src="{{ asset('storage/' . $work->file_path) }}" alt="{{ $work->title }}">
+                    @elseif($work->file_type === 'application/pdf')
+                        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1e293b;color:#94a3b8;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:40px;height:40px;margin-bottom:0.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                            <span style="font-size:0.75rem;font-weight:600;">Dokumen PDF</span>
+                        </div>
+                    @elseif($work->video_url)
+                        <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1e293b;color:#94a3b8;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:40px;height:40px;margin-bottom:0.5rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
+                            <span style="font-size:0.75rem;font-weight:600;">Video Link</span>
+                        </div>
+                    @else
+                        <img src="https://picsum.photos/seed/{{ $work->id }}/600/400" alt="{{ $work->title }}">
+                    @endif
+                </div>
                 <div class="portfolio-card-body">
                     <div class="portfolio-card-cats">
                         @foreach($work->categories->take(1) as $cat)

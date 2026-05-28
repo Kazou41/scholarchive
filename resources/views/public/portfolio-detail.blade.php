@@ -52,6 +52,11 @@
                 @endif
             @elseif($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
                 <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }}" class="pd-media-img" data-preview="{{ asset('storage/' . $portfolio->file_path) }}">
+            @elseif($portfolio->file_type === 'application/pdf' && $portfolio->file_path)
+                <iframe src="{{ asset('storage/' . $portfolio->file_path) }}" style="width:100%; height:800px; border:none; border-radius:1rem; display:block; background:#fff;"></iframe>
+                <div style="margin-top:1rem;text-align:right;">
+                    <a href="{{ asset('storage/' . $portfolio->file_path) }}" target="_blank" class="pd-btn-primary" style="display:inline-flex;padding:0.5rem 1rem;font-size:0.875rem;">Buka di Tab Baru / Unduh</a>
+                </div>
             @elseif($portfolio->file_path)
                 <div class="pd-media-file">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:48px;height:48px;color:#818cf8;margin-bottom:1rem;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>

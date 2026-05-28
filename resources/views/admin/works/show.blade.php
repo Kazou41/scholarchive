@@ -42,6 +42,11 @@
                 @endif
             @elseif($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
                 <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }}" style="width:100%;display:block;">
+            @elseif($portfolio->file_type === 'application/pdf' && $portfolio->file_path)
+                <iframe src="{{ asset('storage/' . $portfolio->file_path) }}" style="width:100%; height:800px; border:none; display:block; background:#fff;"></iframe>
+                <div style="padding: 1rem; text-align: center; background: var(--surface-card);">
+                    <a href="{{ asset('storage/' . $portfolio->file_path) }}" target="_blank" class="btn btn-primary">Unduh/Lihat File Asli</a>
+                </div>
             @elseif($portfolio->file_path)
                 <div style="padding: 4rem; text-align: center; background: var(--surface-card);">
                     <a href="{{ asset('storage/' . $portfolio->file_path) }}" target="_blank" class="btn btn-primary">Unduh/Lihat File Asli</a>
