@@ -61,7 +61,12 @@
                     <textarea name="description" class="dk-input dk-textarea" rows="5" placeholder="Jelaskan tentang karya Anda, proses pembuatan, tools yang digunakan, dll..." required>{{ old('description') }}</textarea>
                 </div>
                 <div class="dk-form-group">
-                    <label class="dk-label">Unggah File *</label>
+                    <label class="dk-label">Link Video (Opsional - YouTube / Google Drive dll)</label>
+                    <input type="url" name="video_url" id="video_url_input" class="dk-input" placeholder="https://www.youtube.com/watch?v=..." value="{{ old('video_url') }}" oninput="toggleFileRequirement()">
+                    <p style="font-size:0.75rem;color:#64748b;margin-top:0.25rem;">Jika karya berupa video besar, cantumkan link di sini. Anda tetap bisa mengunggah gambar sebagai thumbnail.</p>
+                </div>
+                <div class="dk-form-group">
+                    <label class="dk-label" id="file_label">Unggah File (Gambar / Dokumen) *</label>
                     <div class="dk-upload-zone" onclick="document.getElementById('file-upload').click()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:36px;height:36px;color:#818cf8;margin:0 auto 0.5rem;display:block;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
                         <p style="font-weight:600;color:#e2e8f0;font-size:0.875rem;">Klik untuk mengunggah atau seret dan lepas</p>
@@ -70,6 +75,22 @@
                     </div>
                     <div id="file-preview" style="margin-top:0.5rem;font-size:0.875rem;font-weight:600;color:#818cf8;"></div>
                 </div>
+                <script>
+                    function toggleFileRequirement() {
+                        const videoInput = document.getElementById('video_url_input');
+                        const fileInput = document.getElementById('file-upload');
+                        const fileLabel = document.getElementById('file_label');
+                        if (videoInput.value.trim() !== '') {
+                            fileInput.required = false;
+                            fileLabel.innerHTML = 'Unggah Thumbnail / File pendukung (Opsional)';
+                        } else {
+                            fileInput.required = true;
+                            fileLabel.innerHTML = 'Unggah File (Gambar / Dokumen) *';
+                        }
+                    }
+                    // Run once on load
+                    document.addEventListener('DOMContentLoaded', toggleFileRequirement);
+                </script>
                 <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
                     <button type="submit" class="dk-btn-primary">Publikasikan Karya</button>
                     <a href="{{ route('home') }}" class="dk-btn-secondary">Batal</a>

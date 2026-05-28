@@ -15,6 +15,7 @@ class Portfolio extends Model
         'description',
         'file_path',
         'file_type',
+        'video_url',
         'is_featured',
         'view_count',
     ];

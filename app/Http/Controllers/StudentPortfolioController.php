@@ -26,11 +26,17 @@ class StudentPortfolioController extends Controller
             'description' => 'required|string',
             'categories'  => 'required|array|min:1',
             'categories.*'=> 'exists:categories,id',
-            'file'        => 'required|file|max:51200', // 50MB
+            'video_url'   => 'nullable|url|max:255',
+            'file'        => 'required_without:video_url|file|max:51200', // 50MB
         ]);
 
-        $file = $request->file('file');
-        $path = $file->store('portfolios', 'public');
+        $path = null;
+        $fileType = null;
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = $file->store('portfolios', 'public');
+            $fileType = $file->getClientMimeType();
+        }
 
         $portfolio = Portfolio::create([
             'student_id'  => Auth::id(),
@@ -38,8 +44,9 @@ class StudentPortfolioController extends Controller
             'slug'        => Str::slug($validated['title']) . '-' . Str::random(5),
             'type'        => $validated['type'],
             'description' => $validated['description'],
+            'video_url'   => $validated['video_url'],
             'file_path'   => $path,
-            'file_type'   => $file->getClientMimeType(),
+            'file_type'   => $fileType,
         ]);
 
         $portfolio->categories()->attach($validated['categories']);
@@ -64,6 +71,7 @@ class StudentPortfolioController extends Controller
             'description' => 'required|string',
             'categories'  => 'required|array|min:1',
             'categories.*'=> 'exists:categories,id',
+            'video_url'   => 'nullable|url|max:255',
             'file'        => 'nullable|file|max:51200',
         ]);
 
@@ -71,6 +79,7 @@ class StudentPortfolioController extends Controller
             'title'       => $validated['title'],
             'type'        => $validated['type'],
             'description' => $validated['description'],
+            'video_url'   => $validated['video_url'],
         ]);
 
         if ($request->hasFile('file')) {

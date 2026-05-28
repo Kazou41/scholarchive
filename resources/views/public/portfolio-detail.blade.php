@@ -17,7 +17,25 @@
 
         {{-- Media --}}
         <div class="pd-media" id="pd-media-wrap">
-            @if($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
+            @if($portfolio->video_url)
+                @php
+                    $embedUrl = $portfolio->video_url;
+                    if (str_contains($embedUrl, 'youtube.com/watch?v=')) {
+                        $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
+                        $embedUrl = explode('&', $embedUrl)[0]; // Remove extra params
+                    } elseif (str_contains($embedUrl, 'youtu.be/')) {
+                        $embedUrl = str_replace('youtu.be/', 'youtube.com/embed/', $embedUrl);
+                        $embedUrl = explode('?', $embedUrl)[0];
+                    }
+                @endphp
+                <iframe src="{{ $embedUrl }}" style="width:100%; aspect-ratio: 16/9; border:none; border-radius:1rem; display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                @if($portfolio->file_path && str_starts_with($portfolio->file_type, 'image/'))
+                    <div style="margin-top:1rem;">
+                        <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }} Thumbnail" style="width:100%; border-radius:1rem; cursor:pointer;" data-preview="{{ asset('storage/' . $portfolio->file_path) }}" onclick="openPreview(this)">
+                    </div>
+                @endif
+            @elseif($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
                 <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }}" class="pd-media-img" data-preview="{{ asset('storage/' . $portfolio->file_path) }}">
             @elseif($portfolio->file_path)
                 <div class="pd-media-file">

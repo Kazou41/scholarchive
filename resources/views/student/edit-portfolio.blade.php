@@ -66,11 +66,16 @@
                     <textarea name="description" class="dk-input dk-textarea" rows="5" placeholder="Jelaskan tentang karya Anda, proses pembuatan, tools yang digunakan, dll..." required>{{ old('description', $portfolio->description) }}</textarea>
                 </div>
                 <div class="dk-form-group">
-                    <label class="dk-label">Upload File Baru (Opsional)</label>
+                    <label class="dk-label">Link Video (Opsional - YouTube / Google Drive dll)</label>
+                    <input type="url" name="video_url" class="dk-input" placeholder="https://www.youtube.com/watch?v=..." value="{{ old('video_url', $portfolio->video_url) }}">
+                    <p style="font-size:0.75rem;color:#64748b;margin-top:0.25rem;">Jika karya berupa video besar, cantumkan link di sini.</p>
+                </div>
+                <div class="dk-form-group">
+                    <label class="dk-label">Upload Thumbnail / File Baru (Opsional)</label>
                     <div class="dk-upload-zone" onclick="document.getElementById('file-upload').click()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:36px;height:36px;color:#818cf8;margin:0 auto 0.5rem;display:block;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
                         <p style="font-weight:600;color:#e2e8f0;font-size:0.875rem;">Klik untuk mengunggah file baru menggantikan yang lama</p>
-                        <p style="font-size:0.75rem;color:#64748b;">Biarkan kosong untuk mempertahankan file ({{ basename($portfolio->file_path) }})</p>
+                        <p style="font-size:0.75rem;color:#64748b;">Biarkan kosong untuk mempertahankan file ({{ $portfolio->file_path ? basename($portfolio->file_path) : 'Tidak ada' }})</p>
                         <input type="file" name="file" id="file-upload" style="display:none;" onchange="document.getElementById('file-preview').textContent = this.files[0] ? this.files[0].name : ''">
                     </div>
                     <div id="file-preview" style="margin-top:0.5rem;font-size:0.875rem;font-weight:600;color:#818cf8;"></div>

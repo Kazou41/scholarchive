@@ -8,7 +8,24 @@
 <div class="grid-2" style="grid-template-columns:1.5fr 1fr;gap:1.5rem;">
     <div>
         <div style="border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;background:var(--surface-container);">
-            @if($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
+            @if($portfolio->video_url)
+                @php
+                    $embedUrl = $portfolio->video_url;
+                    if (str_contains($embedUrl, 'youtube.com/watch?v=')) {
+                        $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
+                        $embedUrl = explode('&', $embedUrl)[0];
+                    } elseif (str_contains($embedUrl, 'youtu.be/')) {
+                        $embedUrl = str_replace('youtu.be/', 'youtube.com/embed/', $embedUrl);
+                        $embedUrl = explode('?', $embedUrl)[0];
+                    }
+                @endphp
+                <iframe src="{{ $embedUrl }}" style="width:100%; aspect-ratio: 16/9; border:none; display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                @if($portfolio->file_path && str_starts_with($portfolio->file_type, 'image/'))
+                    <div style="padding:1rem;">
+                        <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }} Thumbnail" style="width:100%;display:block;border-radius:var(--radius-md);">
+                    </div>
+                @endif
+            @elseif($portfolio->file_type && str_starts_with($portfolio->file_type, 'image/'))
                 <img src="{{ asset('storage/' . $portfolio->file_path) }}" alt="{{ $portfolio->title }}" style="width:100%;display:block;">
             @elseif($portfolio->file_path)
                 <div style="padding: 4rem; text-align: center; background: var(--surface-card);">
