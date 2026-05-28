@@ -26,6 +26,9 @@
                         if (!$videoId && isset($parsed['path']) && str_contains($parsed['path'], '/shorts/')) {
                             $videoId = str_replace('/shorts/', '', $parsed['path']);
                         }
+                        if (!$videoId && isset($parsed['path']) && str_contains($parsed['path'], '/live/')) {
+                            $videoId = str_replace('/live/', '', $parsed['path']);
+                        }
                         if ($videoId) {
                             $embedUrl = 'https://www.youtube.com/embed/' . $videoId;
                         }
