@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Portfolio;
+use App\Models\StudentProfile;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -61,11 +62,43 @@ class PortfolioController extends Controller
                 });
             }
 
+            // Filter by angkatan (class_name)
+            if ($angkatan = $request->input('angkatan')) {
+                $query->whereHas('studentProfile', function ($q) use ($angkatan) {
+                    $q->where('class_name', $angkatan);
+                });
+            }
+
+            // Filter by jurusan (major)
+            if ($jurusan = $request->input('jurusan')) {
+                $query->whereHas('studentProfile', function ($q) use ($jurusan) {
+                    $q->where('major', $jurusan);
+                });
+            }
+
             $students = $query->orderBy('name')->paginate(12)->withQueryString();
             $portfolios = null;
         }
 
-        return view('public.portfolio-search', compact('portfolios', 'students', 'categories', 'types', 'tab'));
+        // Data for student filter dropdowns
+        $angkatanList = StudentProfile::whereNotNull('class_name')
+            ->where('class_name', '!=', '')
+            ->select('class_name')
+            ->distinct()
+            ->orderBy('class_name')
+            ->pluck('class_name');
+
+        $jurusanList = StudentProfile::whereNotNull('major')
+            ->where('major', '!=', '')
+            ->select('major')
+            ->distinct()
+            ->orderBy('major')
+            ->pluck('major');
+
+        return view('public.portfolio-search', compact(
+            'portfolios', 'students', 'categories', 'types', 'tab',
+            'angkatanList', 'jurusanList'
+        ));
     }
 
     public function show(Portfolio $portfolio)

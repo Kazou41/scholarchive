@@ -20,6 +20,20 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:18px;height:18px;color:rgba(148,163,184,0.5);flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
                 <input type="text" name="q" value="{{ request('q') }}" placeholder="{{ $tab === 'siswa' ? 'Cari nama siswa, jurusan, keahlian...' : 'Cari judul karya, deskripsi...' }}">
             </div>
+            @if($tab === 'siswa')
+            <select name="angkatan" class="pf-select" onchange="this.form.submit()">
+                <option value="">Semua Angkatan</option>
+                @foreach($angkatanList as $angkatan)
+                    <option value="{{ $angkatan }}" {{ request('angkatan') == $angkatan ? 'selected' : '' }}>{{ $angkatan }}</option>
+                @endforeach
+            </select>
+            <select name="jurusan" class="pf-select" onchange="this.form.submit()">
+                <option value="">Semua Jurusan</option>
+                @foreach($jurusanList as $jurusan)
+                    <option value="{{ $jurusan }}" {{ request('jurusan') == $jurusan ? 'selected' : '' }}>{{ $jurusan }}</option>
+                @endforeach
+            </select>
+            @endif
             @if($tab === 'karya')
             <select name="category" class="pf-select" onchange="this.form.submit()">
                 <option value="">Semua Kategori</option>
@@ -499,12 +513,18 @@
 <script>
 function switchTab(tab) {
     document.getElementById('search-tab-input').value = tab;
-    // Clear filters if switching to Siswa to avoid query string mismatch
+    // Clear filters when switching tabs to avoid query string mismatch
     if (tab === 'siswa') {
         const catSelect = document.querySelector('select[name="category"]');
         const typeSelect = document.querySelector('select[name="type"]');
         if (catSelect) catSelect.value = '';
         if (typeSelect) typeSelect.value = '';
+    }
+    if (tab === 'karya') {
+        const angkatanSelect = document.querySelector('select[name="angkatan"]');
+        const jurusanSelect = document.querySelector('select[name="jurusan"]');
+        if (angkatanSelect) angkatanSelect.value = '';
+        if (jurusanSelect) jurusanSelect.value = '';
     }
     document.querySelector('.pf-filter-bar').submit();
 }

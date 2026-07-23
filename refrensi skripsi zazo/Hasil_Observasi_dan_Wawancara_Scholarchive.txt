@@ -1,0 +1,57 @@
+HASIL OBSERVASI DAN WAWANCARA
+Penelitian: Pengembangan Website Portofolio Siswa "Scholarchive" sebagai Arsip Digital Karya Siswa di SMKN 3 Yogyakarta
+Lokasi: SMK Negeri 3 Yogyakarta, Program Keahlian Broadcasting dan Perfilman
+======================================================================
+
+BAGIAN 1: HASIL OBSERVASI
+======================================================================
+
+Observasi dalam penelitian ini dilaksanakan dalam dua tahap, yaitu observasi pada tahap analisis kebutuhan untuk mengetahui kondisi awal pengelolaan karya siswa, serta observasi pada tahap uji coba untuk mengamati proses penggunaan website Scholarchive oleh guru dan siswa Broadcasting dan Perfilman SMK Negeri 3 Yogyakarta.
+
+Berdasarkan hasil observasi pada tahap analisis kebutuhan, kondisi fasilitas teknologi informasi dan komunikasi di SMK Negeri 3 Yogyakarta tergolong memadai untuk mendukung penggunaan website Scholarchive. Sekolah memiliki ketersediaan komputer dan laptop yang cukup, didukung oleh jaringan internet yang stabil, sehingga tidak ditemukan kendala teknis yang berarti dari sisi infrastruktur dalam pelaksanaan uji coba.
+
+Dari sisi pengelolaan karya siswa, hasil observasi menunjukkan bahwa pengelolaan karya siswa Broadcasting dan Perfilman saat ini masih bersifat campuran antara cara konvensional dan digital yang belum terstandar. Sebagian karya siswa masih disimpan secara manual, sementara sebagian lainnya telah disimpan secara digital melalui Google Drive pribadi masing-masing siswa atau guru. Meskipun penyimpanan melalui Google Drive menunjukkan adanya kesadaran digital, praktik ini belum terpusat, tidak memiliki struktur pengelolaan yang konsisten, dan tidak menyediakan tampilan portofolio yang dapat diakses secara publik. Hasil observasi juga mengonfirmasi bahwa SMK Negeri 3 Yogyakarta belum memiliki platform atau website portofolio digital siswa sebelumnya, sehingga pengelolaan dan publikasi karya siswa sepenuhnya bergantung pada inisiatif individu tanpa sistem yang baku.
+
+Pada tahap uji coba, observasi dilakukan terhadap respons guru dan siswa saat menggunakan website Scholarchive secara langsung. Guru dan siswa menunjukkan respons yang cukup antusias terhadap website yang dikembangkan, meskipun terdapat sedikit proses adaptasi pada awal penggunaan, mengingat website ini merupakan sistem yang baru pertama kali mereka gunakan. Proses penggunaan fitur-fitur utama, seperti pengelolaan profil, unggah karya, dan publikasi portofolio, secara umum berlangsung lancar. Namun, ditemukan beberapa kendala kecil berupa kebutuhan penjelasan ulang terhadap fungsi sebagian fitur, yang menunjukkan bahwa beberapa elemen antarmuka masih dapat ditingkatkan kejelasannya agar lebih mudah dipahami pengguna tanpa pendampingan tambahan.
+
+--- Tabel Ringkasan Hasil Observasi ---
+
+No | Aspek yang Diamati                          | Hasil Temuan
+1  | Kondisi fasilitas TIK dan jaringan internet | Memadai; ketersediaan komputer/laptop cukup dan jaringan internet stabil
+2  | Kondisi pengelolaan karya siswa saat ini    | Campuran manual dan digital terbatas (Google Drive pribadi), belum terpusat dan belum terstruktur
+3  | Ketersediaan platform portofolio digital sebelumnya | Belum tersedia sama sekali
+4  | Respons pengguna terhadap Scholarchive      | Cukup antusias, dengan sedikit proses adaptasi di awal penggunaan
+5  | Kelancaran penggunaan fitur website         | Lancar, dengan kendala kecil berupa kebutuhan penjelasan ulang pada beberapa fitur
+
+======================================================================
+
+BAGIAN 2: HASIL WAWANCARA
+======================================================================
+
+Narasumber: Bapak Sapto Angkasa, S.Si
+Jabatan: Guru Broadcasting dan Perfilman SMK Negeri 3 Yogyakarta
+Tahap: Analisis Kebutuhan (sebelum pengembangan sistem)
+
+Wawancara dilaksanakan terhadap Bapak Sapto Angkasa, S.Si selaku guru Broadcasting dan Perfilman SMK Negeri 3 Yogyakarta pada tahap analisis kebutuhan untuk memperoleh informasi mendalam mengenai permasalahan pengelolaan karya siswa serta kebutuhan fitur website Scholarchive yang akan dikembangkan.
+
+Berdasarkan hasil wawancara, Bapak Sapto Angkasa, S.Si menyampaikan bahwa pengelolaan karya siswa Broadcasting dan Perfilman saat ini masih dilakukan secara campuran antara cara konvensional dan digital terbatas melalui Google Drive, sejalan dengan temuan yang diperoleh pada tahap observasi. Beliau mengungkapkan bahwa kondisi tersebut menimbulkan dua kendala utama dalam praktiknya. Pertama, guru mengalami kesulitan dalam memantau perkembangan karya setiap siswa secara berkelanjutan, karena karya yang tersimpan di berbagai lokasi yang berbeda tanpa struktur yang konsisten menyulitkan proses pelacakan dan evaluasi perkembangan kompetensi siswa dari waktu ke waktu. Kedua, sekolah belum memiliki media yang dapat digunakan untuk menampilkan karya siswa kepada publik maupun pihak industri, sehingga potensi karya-karya berkualitas yang dihasilkan siswa belum dapat diapresiasi atau dimanfaatkan secara optimal untuk membuka peluang kerja sama maupun pengenalan kompetensi siswa kepada dunia kerja.
+
+Terkait harapan terhadap fitur yang perlu dikembangkan, Bapak Sapto Angkasa, S.Si menyampaikan tiga kebutuhan utama. Pertama, beliau berharap tersedia fitur arsip yang rapi dan terorganisasi per siswa maupun per kelas, sehingga karya-karya yang telah dihasilkan dapat dikelola secara lebih sistematis dibandingkan kondisi saat ini. Kedua, beliau menekankan pentingnya fitur publikasi karya yang dapat diakses oleh publik, dengan harapan dapat memperluas peluang karya siswa untuk dilihat oleh pihak industri terkait. Ketiga, beliau berharap tersedia fitur monitoring atau pemantauan karya siswa yang memudahkan guru dalam mengawasi dan mengevaluasi perkembangan kompetensi siswa secara berkelanjutan tanpa harus memeriksa dokumen secara manual satu per satu.
+
+Mengenai kesiapan infrastruktur, Bapak Sapto Angkasa, S.Si menyatakan bahwa ketersediaan perangkat dan jaringan internet baik di sekolah maupun yang dimiliki oleh siswa sudah memadai untuk mendukung penggunaan website Scholarchive, sejalan dengan hasil observasi yang telah dilakukan sebelumnya. Secara keseluruhan, beliau menunjukkan dukungan yang sangat positif terhadap rencana pengembangan website Scholarchive, dengan menyatakan bahwa keberadaan sistem ini akan sangat membantu, baik bagi siswa dalam mendokumentasikan dan mempublikasikan karya mereka, maupun bagi guru dalam melakukan pengelolaan dan pemantauan karya siswa secara lebih efisien.
+
+--- Tabel Ringkasan Hasil Wawancara ---
+
+No | Aspek                          | Hasil Wawancara
+1  | Kondisi pengelolaan karya saat ini | Campuran manual dan digital terbatas (Google Drive), belum terpusat
+2  | Kendala utama                  | Sulit memantau perkembangan karya tiap siswa; belum ada media publikasi karya ke publik/industri
+3  | Harapan terhadap fitur         | Arsip rapi per siswa/kelas, publikasi karya ke publik, monitoring perkembangan karya oleh guru
+4  | Kesiapan infrastruktur         | Memadai, baik dari sisi sekolah maupun siswa
+5  | Dukungan dan motivasi          | Sangat mendukung; website dinilai akan sangat membantu siswa maupun guru
+
+======================================================================
+
+CATATAN UNTUK PENGGUNAAN DI BAB IV:
+Kedua hasil di atas (observasi dan wawancara) merupakan data primer tahap Requirement Analysis dalam model pengembangan Waterfall. Gunakan sebagai dasar penulisan subbab "Hasil Analisis Kebutuhan" yang menjelaskan temuan kondisi lapangan SEBELUM Scholarchive dikembangkan, serta sebagai justifikasi kebutuhan fitur yang kemudian dirancang pada tahap System Design.
+
+PENTING: Data ini TIDAK menyinggung topik LMS, media pembelajaran, kuis, atau forum diskusi. Fokus sepenuhnya pada pengelolaan karya, arsip digital, dan kebutuhan portofolio siswa Broadcasting dan Perfilman.
