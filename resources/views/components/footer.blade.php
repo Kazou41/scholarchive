@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; {{ date('Y') }} Scholarchive. Hak cipta dilindungi.
+            &copy; {{ date('Y') }} Alzazo Khozetama. Hak cipta dilindungi.
         </div>
     </div>
 </footer>
